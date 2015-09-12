@@ -1,0 +1,25 @@
+{
+  "name": "youtuby",
+  "version": "1.0.0",
+  "description": "youtube scraper using node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidlimcheng/youtuby.git"
+  },
+  "author": "David Cheng <davidlimcheng@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidlimcheng/youtuby/issues"
+  },
+  "homepage": "https://github.com/davidlimcheng/youtuby#readme",
+  "dependencies": {
+    "crawler": "^0.4.3",
+    "express": "^4.13.3",
+    "needle": "^0.10.0",
+    "sugar": "^1.4.1"
+  }
+}
