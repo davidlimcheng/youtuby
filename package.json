@@ -19,7 +19,6 @@
   "dependencies": {
     "crawler": "^0.4.3",
     "express": "^4.13.3",
-    "needle": "^0.10.0",
     "sugar": "^1.4.1"
   }
 }

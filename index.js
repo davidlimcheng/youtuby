@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-var needle = require('needle');
 var Crawler = require('crawler');
 var url = require('url');
 var sugar = require('sugar');
@@ -17,13 +16,14 @@ var parsePage = new Crawler({
 	callback: function(error, result, $){
 		var videos = [];
 		$('.channels-content-item').each(function(i, element){
-			var link = $(this).find('.yt-lockup-title').children().attr('href');
-			var date = Date.create($(this).find('.yt-lockup-meta-info').children().eq(1).text()).short();
+			var id = $(this).find('.yt-lockup-title').children().attr('href');
+			id = id.replace("/watch?v=","");
+			var date = Date.create($(this).find('.yt-lockup-meta-info').children().eq(1).text()).getTime();
 			var title = $(this).find('.yt-lockup-title').children().attr('title');
-			if(link){
+			if(id){
 				videos.push({
 					datePublished: date,
-					link: link,
+					id: id,
 					title: title
 				});
 			}
@@ -75,5 +75,9 @@ app.get('/:id?', function(req, res){
 
 });
 
-var port = process.env.PORT || 3300;
-app.listen(port);
+var server = app.listen(process.env.PORT || 3300, function(){
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('youtuby is listening at http://%s:%s', host, port);
+});
